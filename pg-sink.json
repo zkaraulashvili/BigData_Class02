@@ -1,0 +1,20 @@
+{
+  "name": "pg-sink",
+  "config": {
+    "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+
+    "connection.url": "jdbc:postgresql://postgres-dest:5432/destdb",
+    "connection.username": "sink",
+    "connection.password": "sink",
+
+    "topics": "pg.public.payments",
+
+    "insert.mode": "upsert",
+    "delete.enabled": "true",
+    "primary.key.mode": "record_key",
+
+    "schema.evolution": "basic",
+    "table.name.format": "payments"
+  }
+}

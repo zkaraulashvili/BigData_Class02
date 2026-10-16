@@ -1,0 +1,25 @@
+{
+  "name": "pg-source",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+
+    "database.hostname": "postgres-source",
+    "database.port": "5432",
+    "database.user": "dbz",
+    "database.password": "dbz",
+    "database.dbname": "sourcedb",
+
+    "topic.prefix": "pg",
+    "plugin.name": "pgoutput",
+
+    "publication.name": "pub_exam",
+    "table.include.list": "public.payments,public.grades",
+
+    "slot.name": "dbz_slot_exam",
+    "snapshot.mode": "initial",
+
+    "heartbeat.interval.ms": "5000",
+    "heartbeat.action.query": "INSERT INTO debezium_info.heartbeat (date_load) VALUES (NOW());"
+  }
+}

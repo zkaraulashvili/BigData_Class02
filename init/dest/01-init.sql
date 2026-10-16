@@ -1,0 +1,6 @@
+CREATE USER sink WITH PASSWORD 'sink';
+
+GRANT CONNECT ON DATABASE destdb TO sink;
+GRANT ALL ON SCHEMA public TO sink;
+
+ALTER SCHEMA public OWNER TO sink;
